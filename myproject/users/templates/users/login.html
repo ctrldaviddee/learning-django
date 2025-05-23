@@ -12,7 +12,7 @@
 
         {% with next_url=request.GET.next %}
 
-        <form class="form-with-validation" action="/users/login/" method="post">
+        <form class="form-with-validation" action="{% url 'users:login' %}" method="post">
             {% csrf_token %}
             
             {{ form.as_p }}
