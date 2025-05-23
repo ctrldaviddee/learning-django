@@ -10,9 +10,18 @@
 
         <h1> User Login </h1>
 
+        {% with next_url=request.GET.next %}
+
         <form class="form-with-validation" action="/users/login/" method="post">
             {% csrf_token %}
+            
             {{ form.as_p }}
+            
+            {% if next_url %}
+                <input type="hidden" name="next" value="{{ next_url }}">
+            {% endif %}
             <button class="form-submit"> Submit </button>
         </form>
+        
+        {% endwith %}
 {% endblock %}
